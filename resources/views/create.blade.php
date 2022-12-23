@@ -24,7 +24,7 @@
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/create">create book</a>
+                        <a class="nav-link" href="#">create book</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -35,20 +35,23 @@
         </div>
     </nav>
 
-    <div class="d-flex flex-wrap justify-content-start gap-4 p-5">
-        @foreach ($books as $book)
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $book->title }}</h5>
-                    <p class="card-text">{{ $book->stock }}</p>
-                    <p class="card-text">{{ $book->writer }}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        @endforeach
-    </div>
 
+<form action="/create-book" method="post">
+    @csrf
+    <div class="mb-3">
+        <label for="formFile" class="form-label">Title</label>
+        <input name="title" class="form-control" type="text" id="formFile">
+    </div>
+    <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Stock</label>
+        <input name="stock" class="form-control" type="number" id="formFileMultiple" multiple>
+    </div>
+    <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Writer</label>
+        <input name="writer" class="form-control" type="text" id="formFileMultiple" multiple>
+    </div>
+    <input type="submit" value="submit">
+</form>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
